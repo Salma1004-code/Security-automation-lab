@@ -11,6 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        # 1. Checkout the code using actions/checkout
-        # 2. Run bandit using tj-actions bandit
+      - name: Checkout code
+        uses: actions/checkout@v4
         
+      - name: Run Checkov scan
+        uses: bridgecrewio/checkov-action@v12
+        with:
+          directory: ./IaC
+        
+
+# 1. Checkout the code
+# 2. Instal docker buildx  docker/setup-buildx-action@v3
+# 3. Build the docker image
+# 4. Scan with trivy the built image
